@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <app-loading-spinner *ngIf="!loaded"></app-loading-spinner>
+  </div>
+</div>
+<div class="input-group">
+  <label for="filter">Filter by role:</label>
+  <input type="text" class="form-control" [(ngModel)]="query">
+</div>
+<div *ngIf="loaded">
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Email</th>
+      <th>State</th>
+      <th>Avatar</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let user of users | search:'role':query">
+    <td>{{user.id}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.role}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.state}}</td>
+    <td><img src="{{user.avatar}}" alt="{{user.name}}" class="img-responsive" style="max-height: 50px;"></td>
+  </tr>
+</table>
+</div>
