@@ -6,5 +6,5 @@ export class ListItem {
     public email: string,
     public state: string,
     public avatar: string
-  ){}
+  ) {}
 }

@@ -9,15 +9,38 @@
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" ngModel name="username" required #username="ngModel">
-        <span class="help-block" *ngIf="!username.valid && username.touched">Please enter a valid value!</span>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          ngModel
+          name="username"
+          required
+          #username="ngModel"
+        />
+        <span class="help-block" *ngIf="!username.valid && username.touched"
+          >Please enter a valid value!</span
+        >
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" ngModel name="password" required #password="ngModel" minlength="8">
-        <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a valid value!</span>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          ngModel
+          name="password"
+          required
+          #password="ngModel"
+          minlength="8"
+        />
+        <span class="help-block" *ngIf="!password.valid && password.touched"
+          >Please enter a valid value!</span
+        >
       </div>
-      <button type="submit" class="btn btn-default" [disabled]="!f.valid">Submit</button>
+      <button type="submit" class="btn btn-default" [disabled]="!f.valid">
+        Submit
+      </button>
     </form>
   </div>
 </div>

@@ -1,5 +1,5 @@
-export class User {  
-  constructor(private _token: string, private _tokenExpire: Date){}
+export class User {
+  constructor(private _token: string, private _tokenExpire: Date) {}
 
   get token() {
     if (!this._tokenExpire || new Date() > this._tokenExpire) {
@@ -7,5 +7,4 @@ export class User {
     }
     return this._token;
   }
-
 }

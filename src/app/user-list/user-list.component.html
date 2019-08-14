@@ -5,9 +5,9 @@
   <div *ngIf="loaded">
     <div class="input-group">
       <label for="filter">Filter by role:</label>
-      <input type="text" class="form-control" [(ngModel)]="query">
+      <input type="text" class="form-control" [(ngModel)]="query" />
     </div>
-    <hr>
+    <hr />
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -22,12 +22,19 @@
         <tr class="text-center" *ngIf="users.length < 0">
           <td colspan="5" style="padding:20px 0px;">No data found.</td>
         </tr>
-        <tr *ngFor="let user of users | search:'role':query"> 
-          <td class="text-center">{{user.name}}</td>
-          <td class="text-center">{{user.role}}</td>
-          <td class="text-center">{{user.email}}</td>
-          <td class="text-center">{{user.state}}</td>
-          <td class="text-center"><img src="{{user.avatar}}" alt="{{user.name}}" class="img-responsive" style="max-height: 50px;margin:0 auto;"></td>
+        <tr *ngFor="let user of users | search: 'role':query">
+          <td class="text-center">{{ user.name }}</td>
+          <td class="text-center">{{ user.role }}</td>
+          <td class="text-center">{{ user.email }}</td>
+          <td class="text-center">{{ user.state }}</td>
+          <td class="text-center">
+            <img
+              src="{{ user.avatar }}"
+              alt="{{ user.name }}"
+              class="img-responsive"
+              style="max-height: 50px;margin:0 auto;"
+            />
+          </td>
         </tr>
       </table>
     </div>
