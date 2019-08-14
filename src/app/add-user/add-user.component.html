@@ -4,6 +4,9 @@
     <div class="alert alert-success" *ngIf="submitted">
       User was successfully created.
     </div>
+    <div class="alert alert-success" *ngIf="isError">
+      Something went wrong.
+    </div>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="form-group">
         <label for="name">Name</label>

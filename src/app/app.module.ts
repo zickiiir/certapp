@@ -10,7 +10,6 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
-import { UserService } from './user-list/user.service';
 import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.component';
 import { FilterPipe } from './shared/filter.pipe';
 
@@ -31,7 +30,7 @@ import { FilterPipe } from './shared/filter.pipe';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

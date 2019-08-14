@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService, AuthorisedUser } from './auth.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -11,24 +12,28 @@ import { Observable } from 'rxjs';
 
 export class AuthComponent {
   isLoading: boolean = false;
-  error: boolean = null;
-  
+  isError: boolean = false;
+
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ){}
 
   onSubmit(form: NgForm){
+    this.isLoading = true;
+
     let authObs: Observable<AuthorisedUser>;
 
     this.isLoading = true;
-    authObs = this.authService.signIn(form.value.username, form.value.password);
+    authObs = this.authService.logIn(form.value.username, form.value.password);
     authObs.subscribe(
       response => {
-        console.log(response);
         this.isLoading = false;
+        this.isError = false;
+        this.router.navigate(['/list']);
       },
       error => {
-        console.log(error);
+        this.isError = true;
         this.isLoading = false;
       }
     )

@@ -1,5 +1,11 @@
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-xs-12 text-center">
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+  </div>
+  <div class="alert alert-danger" *ngIf="isError">
+    Something went wrong.
+  </div>
+  <div class="col-lg-8" *ngIf="!isLoading">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="form-group">
         <label for="username">Username</label>
@@ -8,10 +14,10 @@
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" ngModel name="password" required #password="ngModel">
+        <input type="password" class="form-control" id="password" ngModel name="password" required #password="ngModel" minlength="8">
         <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a valid value!</span>
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default" [disabled]="!f.valid">Submit</button>
     </form>
   </div>
 </div>

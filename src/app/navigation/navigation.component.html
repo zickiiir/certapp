@@ -2,19 +2,26 @@
   <div class="container">
     <div class="navbar-header">
       <a routerLink="/" class="navbar-brand">Test App</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="navbar"
+        aria-expanded="false" *ngIf="isAuth" (click)="shouldShow = !shouldShow">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse" id="navbar" [ngClass]="{'show': shouldShow}">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" *ngIf="isAuth" (click)="shouldShow = false">
           <a routerLink="/new">New user</a>
         </li>
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" *ngIf="isAuth" (click)="shouldShow = false">
           <a routerLink="/list">List of users</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="isAuthenticated">
-          <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
+      <ul class="nav navbar-nav navbar-right" *ngIf="isAuth">
+        <li>
+          <a style="cursor: pointer;" (click)="onLogout();shouldShow = false">Logout</a>
         </li>
       </ul>
     </div>
